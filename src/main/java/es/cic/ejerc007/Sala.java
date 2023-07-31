@@ -4,11 +4,11 @@ import java.util.List;
 
 public interface Sala {
 
-	public boolean comprobarAsientos(Venta venta);
+	public boolean comprobarAsientos(Venta venta, int[][] proyecciones);
 	
-	public int[] estadisticasSalaDia(List<Venta> lista, int sala);
+	public double[] estadisticasSalaDia(List<Venta> lista, int sala);
 	
-	public int[] estadisticasSalaProyeccion(List<Venta> lista, int sala, String hora);
+	public double[] estadisticasSalaProyeccion(List<Venta> lista, int sala, String hora);
 	
 	public int obtenerHora(String hora);
 }

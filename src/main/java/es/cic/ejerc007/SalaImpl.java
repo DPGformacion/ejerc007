@@ -1,13 +1,11 @@
 package es.cic.ejerc007;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SalaImpl implements Sala {
 
 	@Override
-	public boolean comprobarAsientos(Venta venta) {
-		int[][] proyecciones = new int[3][3];
+	public boolean comprobarAsientos(Venta venta, int[][] proyecciones) {
 		int convHora = 0, convSala = 0, asientosDisp = 0;
 		
 		convHora = obtenerHora(venta.getHora());
@@ -36,24 +34,24 @@ public class SalaImpl implements Sala {
 	}
 
 	@Override
-	public int[] estadisticasSalaDia(List<Venta> lista, int sala) {
+	public double[] estadisticasSalaDia(List<Venta> lista, int sala) {
 
-		int[] stat = new int[2];
+		double[] stat = new double[2];
 		for (Venta v : lista) {
-			if (v.getSala == sala) {
-				stat[0] = (v.getPrecio() * v.getEntradas());
-				stat[1] = v.getEntradas();
+			if (v.getSala() == sala) {
+				stat[0] += (v.getPrecio() * v.getEntradas());
+				stat[1] += v.getEntradas();
 			}
 		}
 		return stat;
 	}
 
 	@Override
-	public int[] estadisticasSalaProyeccion(List<Venta> lista, int sala, String hora) {
+	public double[] estadisticasSalaProyeccion(List<Venta> lista, int sala, String hora) {
 
-		int[] stat = new int[2];
+		double[] stat = new double[2];
 		for (Venta v : lista) {
-			if (v.getSala == sala && v.getHora == obtenerHora(hora)) {
+			if (v.getSala() == sala && v.getHora() == hora) {
 				stat[0] += (v.getPrecio() * v.getEntradas());
 				stat[1] += v.getEntradas();
 			}
