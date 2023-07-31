@@ -25,7 +25,7 @@ public class SalaImpl implements Sala {
 			break;
 		}	
 		
-		proyecciones[convSala][convHora] += venta.getEntradas();
+		proyecciones[convSala][convHora] += venta.getnumEntradas();
 		if (proyecciones[convSala][convHora] <= asientosDisp) {
 			return true;
 		}
@@ -39,8 +39,8 @@ public class SalaImpl implements Sala {
 		double[] stat = new double[2];
 		for (Venta v : lista) {
 			if (v.getSala() == sala) {
-				stat[0] += (v.getPrecio() * v.getEntradas());
-				stat[1] += v.getEntradas();
+				stat[0] += (v.getPrecio() * v.getnumEntradas());
+				stat[1] += v.getnumEntradas();
 			}
 		}
 		return stat;
@@ -52,8 +52,8 @@ public class SalaImpl implements Sala {
 		double[] stat = new double[2];
 		for (Venta v : lista) {
 			if (v.getSala() == sala && v.getHora() == hora) {
-				stat[0] += (v.getPrecio() * v.getEntradas());
-				stat[1] += v.getEntradas();
+				stat[0] += (v.getPrecio() * v.getnumEntradas());
+				stat[1] += v.getnumEntradas();
 			}
 		}
 		return stat;
