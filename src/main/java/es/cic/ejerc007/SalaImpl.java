@@ -14,15 +14,15 @@ public class SalaImpl implements Sala {
 		
 		switch (venta.getSala()) {
 		case 1:
-			convHora = 0;
+			convSala = 0;
 			asientosDisp = 100;
 			break;
 		case 2:
-			convHora = 1;
+			convSala = 1;
 			asientosDisp = 50;
 			break;
 		case 3:
-			convHora = 2;
+			convSala = 2;
 			asientosDisp = 20;
 			break;
 		}	
@@ -49,17 +49,16 @@ public class SalaImpl implements Sala {
 	}
 
 	@Override
-	public List<Venta> estadisticasSalaProyeccion(List<Venta> lista, int sala, String hora) {
+	public int[] estadisticasSalaProyeccion(List<Venta> lista, int sala, String hora) {
 
 		int[] stat = new int[2];
 		for (Venta v : lista) {
 			if (v.getSala == sala && v.getHora == obtenerHora(hora)) {
-				stat[0] = (v.getPrecio() * v.getEntradas());
-				stat[1] = v.getEntradas();
+				stat[0] += (v.getPrecio() * v.getEntradas());
+				stat[1] += v.getEntradas();
 			}
 		}
 		return stat;
-		return null;
 	}
 
 	@Override
